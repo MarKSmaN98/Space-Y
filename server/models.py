@@ -34,4 +34,7 @@ class Mission(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     astronaut_id = db.Column(db.Integer, db.ForeignKey('astronauts.id'))
     spaceship_id = db.Column(db.Integer, db.ForeignKey('spaceships.id'))
-    
+
+#login class? store cookies here and have two tiers of user, an astronaut and an admin with different privilages:
+#an astronaut should be able to view missions, space ships, and other astronauts
+#an admin/commander should be able to preform crud actions on all of the above
