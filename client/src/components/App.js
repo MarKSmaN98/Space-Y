@@ -1,8 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+// import { Switch, Route } from "react-router-dom";
 
 function App() {
-  // Code goes here!
+
+const [data, setData] = useState([])
+
+useEffect(() => { 
+  fetch("/astronauts")
+    .then(res=> res.json())
+    .then(data => {
+      setData(data)
+      console.log(data)
+    })
+}, [])
+
+
+return (<div>
+  <h1>Hello</h1>
+</div>)
+
+
 }
 
 export default App;
