@@ -11,16 +11,27 @@ class Astronaut(db.Model, SerializerMixin):
     __tablename__ = 'astronauts'
 
     id = db.Column(db.Integer, primary_key=True)
-    pass
+    #name, age, weight
+    name = db.Column(db.String)
+    age = db.Column(db.Integer)
+    weight = db.Column(db.Integer)
+    spaceships = association_proxy('missions', 'spaceship')
+    missions = db.relationship('Mission', backref='astronaut')
 
 class Spaceship(db.Model, SerializerMixin):
     __tablename__ = 'spaceships'
 
     id = db.Column(db.Integer, primary_key=True)
-    pass
+    #name
+    name = db.Column(db.String)
+    astronauts = association_proxy('missions', 'astronaut')
+    missions = db.relationship('Mission', backref='spaceship')
 
 class Mission(db.Model, SerializerMixin):
     __tablename__ = 'missions'
+    #astronaut_id, spaceship_id
 
     id = db.Column(db.Integer, primary_key=True)
-    pass
+    astronaut_id = db.Column(db.Integer, db.ForeignKey('astronauts.id'))
+    spaceship_id = db.Column(db.Integer, db.ForeignKey('spaceships.id'))
+    
