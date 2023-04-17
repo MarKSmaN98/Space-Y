@@ -7,3 +7,11 @@ from config import db
 
 # Models go here!
 
+class Astronaut(db.Model, SerializerMixin):
+    pass
+
+class Spaceship(db.Model, SerializerMixin):
+    pass
+
+class Mission(db.Model, SerializerMixin):
+    pass
