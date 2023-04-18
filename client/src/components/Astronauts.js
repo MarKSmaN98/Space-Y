@@ -10,7 +10,7 @@ function Astronauts() {
         weight:''
     })
 
-    let handleSubmit = e => {
+    let handleSubmit = (e) => {
         e.preventDefault()
         fetch("/astronauts", {
             method:'POST',
@@ -23,8 +23,17 @@ function Astronauts() {
                 'age': formData.age,
                 'weight': formData.weight
             })
+        }) 
+        .then(r => r.json())
+        .then(res => {
+            setData([...data, res])
         })
     }
+
+    let removeAstro = (drop) => {
+        setData(data.filter((astro) => astro.id != drop))
+    }
+
 
     let handleChange = (e) => {
         const name = e.target.name
@@ -41,16 +50,14 @@ function Astronauts() {
         })
         }, [])
 
-    console.log(formData)
-
     let astrolist = data.map((astro) => {
-        return < AstronautCard astro = {astro}/>
+        return < AstronautCard astro = {astro} removeAstro={removeAstro}/>
     }) 
 
     return(
         <div>
             <div>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div class="form-group">
                         <label >Astronaut Name</label>
                         <input class="form-control" name='name' id="astroname" aria-describedby="emailHelp" placeholder="ex. Willy Wonka" onChange={handleChange} />
@@ -64,7 +71,7 @@ function Astronauts() {
                         <label >Astronaut Weight</label>
                         <input onChange={handleChange} class="form-control" name='weight' id="exampleInputPassword1" placeholder="ex. 155" />
                     </div>
-                    <button onChange={handleSubmit} type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
             <div>

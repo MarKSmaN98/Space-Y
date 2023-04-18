@@ -20,6 +20,7 @@ class Astronauts (Resource):
         a_list = []
         for a in Astronaut.query.all():
             a_dict = {
+                'id': a.id,
                 'name': a.name,
                 'age': a.age,
                 'weight': a.weight
