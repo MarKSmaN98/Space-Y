@@ -10,8 +10,6 @@ function AstronautCard({astro, removeAstro}) {
         removeAstro(id)
     }
 
-
-
     return(
         <div>
 

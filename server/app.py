@@ -46,5 +46,55 @@ class Astronauts (Resource):
 
 api.add_resource(Astronauts, '/astronauts')
 
+
+class AstronautByID (Resource):
+    
+    def get(self, id):
+
+        astronaut = Astronaut.query.filter_by(id=id).first()
+
+        astronaut_dict = astronaut.to_dict()
+
+        response = make_response(astronaut_dict, 200)
+
+        return response
+
+
+    def patch(self, id):
+        
+        data = request.get_json()
+
+        astronaut = Astronaut.query.filter_by(id=id).first()
+
+        for attr in data:
+            setattr(astronaut, attr, data[attr])
+
+        db.session.add(astronaut)
+        db.session.commit()
+
+        astronaut_dict = astronaut.to_dict()
+
+        response = make_response(astronaut_dict, 200)
+
+        return response
+
+
+    def delete(self,id):
+        
+        astronaut = Astronaut.query.filter_by(id=id).first()
+
+        db.session.delete(astronaut)
+        db.session.commit()
+
+        astronaut_dict = astronaut.to_dict()
+
+        response = make_response(astronaut_dict, 204)
+
+        return response
+
+
+
+api.add_resource(AstronautByID, '/astronauts/<int:id>')
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
