@@ -51,13 +51,13 @@ function Astronauts() {
         }, [])
 
     let astrolist = data.map((astro) => {
-        return < AstronautCard astro = {astro} removeAstro={removeAstro}/>
+        return < AstronautCard astro = {astro} removeAstro={removeAstro} setData={setData} list={data}/>
     }) 
 
     return(
         <div>
             <div>
-                <form onSubmit={handleSubmit}>
+                <form hidden={true} onSubmit={handleSubmit}>
                     <div class="form-group">
                         <label >Astronaut Name</label>
                         <input class="form-control" name='name' id="astroname" aria-describedby="emailHelp" placeholder="ex. Willy Wonka" onChange={handleChange} />
