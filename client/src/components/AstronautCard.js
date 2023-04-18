@@ -4,11 +4,20 @@ import Button from 'react-bootstrap/Button';
 
 function AstronautCard({astro, removeAstro}) {
     let {id, name, age, weight} = astro
+    let intlocation = parseInt(id)
 
     let dropAstro = () => {
         console.log("clicked remove!")
+        console.log(`/astronauts/${intlocation}`)
+
+        fetch(`/astronauts/${intlocation}`, {
+            method: 'DELETE',
+          })
+
         removeAstro(id)
     }
+
+
 
     return(
         <div>
