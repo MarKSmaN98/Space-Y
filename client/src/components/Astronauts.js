@@ -10,6 +10,22 @@ function Astronauts() {
         weight:''
     })
 
+    let handleSubmit = e => {
+        e.preventDefault()
+        fetch("/astronauts", {
+            method:'POST',
+            mode: "cors",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'name': formData.name,
+                'age': formData.age,
+                'weight': formData.weight
+            })
+        })
+    }
+
     let handleChange = (e) => {
         const name = e.target.name
         const value = e.target.value
@@ -48,7 +64,7 @@ function Astronauts() {
                         <label >Astronaut Weight</label>
                         <input onChange={handleChange} class="form-control" name='weight' id="exampleInputPassword1" placeholder="ex. 155" />
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button onChange={handleSubmit} type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
             <div>

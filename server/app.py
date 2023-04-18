@@ -29,6 +29,19 @@ class Astronauts (Resource):
         response = make_response(a_list, 200)
 
         return response
+    
+    def post(self):
+        new = Astronaut(
+            name = request.get_json()['name'],
+            age = request.get_json()['age'],
+            weight = request.get_json()['weight']
+        )
+        db.session.add(new)
+        db.session.commit()
+
+        response = make_response(new.to_dict(), 201)
+
+        return response
 
 api.add_resource(Astronauts, '/astronauts')
 
