@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
 // import 'semantic-ui-css/semantic.min.css'
-// import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
+import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import App from './components/App';
 import { BrowserRouter} from "react-router-dom";
 

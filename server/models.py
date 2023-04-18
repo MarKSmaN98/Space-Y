@@ -31,6 +31,8 @@ class Mission(db.Model, SerializerMixin):
     __tablename__ = 'missions'
     #astronaut_id, spaceship_id
 
+    serialize_rules = ('astronaut', 'spaceship')
+
     id = db.Column(db.Integer, primary_key=True)
     astronaut_id = db.Column(db.Integer, db.ForeignKey('astronauts.id'))
     spaceship_id = db.Column(db.Integer, db.ForeignKey('spaceships.id'))
