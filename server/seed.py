@@ -1,17 +1,28 @@
 #!/usr/bin/env python3
 
-# Standard library imports
+import random
 from random import randint, choice as rc
-
-# Remote library imports
 from faker import Faker
-
-# Local imports
 from app import app
-from models import db
+from models import db, Astronaut
+fake = Faker()
 
-if __name__ == '__main__':
-    fake = Faker()
-    with app.app_context():
-        print("Starting seed...")
-        # Seed code goes here!
+with app.app_context():
+
+    Astronaut.query.delete()
+    
+    astronauts = []
+    for i in range(10):
+        a = Astronaut(
+            name=fake.name(),
+            age=random.randint(26,36),
+            weight=random.randint(126, 209)
+        )
+        astronauts.append(a)
+    
+    db.session.add_all(astronauts)
+    db.session.commit()
+
+
+    
+
