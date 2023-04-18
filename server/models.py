@@ -16,11 +16,26 @@ class Astronaut(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     #name, age, weight
     name = db.Column(db.String)
-    age = db.Column(db.Integer)
+    age = db.Column(db.Integer, db.CheckConstraint('age == int(age)'))
     weight = db.Column(db.Integer)
 
     spaceships = association_proxy('missions', 'spaceship')
     missions = db.relationship('Mission', backref='astronaut')
+
+    __table_args__ = (db.CheckConstraint('age == int(age)'),)
+
+    @validates('weight') 
+    def weight_validation(self, key, weight):
+        if not 110 < weight < 209:
+            raise ValueError('weight must be above 110 and less than 209')
+        return weight
+
+    @validates('age')
+    def age_validation(self, key, age_input):
+        if type(age_input) != int:
+            raise ValueError('age must be an integer')
+        return age_input
+
 
 class Spaceship(db.Model, SerializerMixin):
     __tablename__ = 'spaceships'
