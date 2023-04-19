@@ -96,5 +96,133 @@ class AstronautByID (Resource):
 
 api.add_resource(AstronautByID, '/astronauts/<int:id>')
 
+class Spaceships (Resource):
+    def get(self):
+        ships = []
+        for ship in Spaceship.query.all():
+            new_ship={
+                'name': ship.name
+            }
+            ships.append(new_ship)
+        response = make_response(ships, 200)
+
+        return response
+
+    def post(self):
+        new_ship = Spaceship(
+            name = request.get_json()['name']
+        )
+        db.session.add(new_ship)
+        db.session.commit()
+        resp = make_response (new_ship.to_dict(), 201)
+        return resp
+
+api.add_resource(Spaceships, '/spaceships')
+
+class SpaceshipById (Resource):
+    def get(self, id):
+        target = Spaceship.query.filter(Spaceship.id == id).first()
+        body = {
+            'name': target.name
+        }
+        resp = make_response(
+            body,
+            200
+        )
+        return resp
+    
+    def patch(self, id):
+        data = request.get_json()
+        target = Spaceship.query.filter(Spaceship.id == id).first()
+        for attr in data:
+            setattr(target, attr, data[attr])
+        db.session.add(target)
+        db.session.commit()
+        body = {
+            'name': target.name
+        }
+        resp = make_response(
+            body,
+            200
+        )
+        return resp
+api.add_resource(SpaceshipById, '/spaceships/<int:id>')
+
+class Missions(Resource):
+    def get(self):
+        missions = []
+        for mission in Mission.query.all():
+            this_mission = {
+                'mission id': mission.id,
+                'astronaut': {
+                    'astronaut id': mission.astronaut.id,
+                    'name': mission.astronaut.name
+                },
+                'spaceship': {
+                    'spaceship id': mission.spaceship.id,
+                    'name': mission.spaceship.name
+                }
+            }
+            missions.append(this_mission)
+        resp = make_response(
+            missions,
+            200
+        )
+        return resp
+    
+    def post(self):
+        new_mission = Mission(
+            astronaut_id = request.get_json()['astronaut_id'],
+            spaceship_id = request.get_json()['spaceship_id']
+        )
+        db.session.add(new_mission)
+        db.session.commit()
+        this_mission = {
+            'mission id': new_mission.id,
+            'astronaut': {
+                'astronaut id': new_mission.astronaut.id,
+                'name': new_mission.astronaut.name
+            },
+            'spaceship': {
+                'spaceship id': new_mission.spaceship.id,
+                'name': new_mission.spaceship.name
+            }
+        }
+        body = this_mission
+        resp = make_response(body, 201)
+        return resp
+    
+api.add_resource(Missions, '/missions')
+
+class MissionByID(Resource):
+    def get(self, id):
+        target_mission = Mission.query.filter(Mission.id == id).first()
+        this_mission = {
+            'mission id': target_mission.id,
+            'astronaut': {
+                'astronaut id': target_mission.astronaut.id,
+                'name': target_mission.astronaut.name
+            },
+            'spaceship': {
+                'spaceship id': target_mission.spaceship.id,
+                'name': target_mission.spaceship.name
+            }
+        }
+        resp = make_response(this_mission, 200)
+        return resp
+    
+    def patch(self, id):
+        mission = Mission.query.filter(Mission.id == id).first()
+        data = request.get_json()
+
+        for attr in data:
+            setattr(mission, attr, data[attr])
+        db.session.add(mission)
+        db.session.commit()
+        resp = make_response(mission.to_dict(), 200)
+        return resp
+api.add_resource(MissionByID, '/missions/<int:id>')
+
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
