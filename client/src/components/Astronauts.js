@@ -57,7 +57,7 @@ function Astronauts() {
     return(
         <div>
             <div>
-                <form hidden={true} onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div class="form-group">
                         <label >Astronaut Name</label>
                         <input class="form-control" name='name' id="astroname" aria-describedby="emailHelp" placeholder="ex. Willy Wonka" onChange={handleChange} />

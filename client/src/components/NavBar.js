@@ -1,27 +1,45 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import {NavLink} from "react-router-dom";
 
 function NavBar() {
   return (
-    <>
-      <Navbar >
-        <Container class="nav flex-column">
-          <Nav>
-            <NavLink to='/'> Home Page</NavLink>
-          </Nav>
-          <Nav className="me-auto">
-            <NavLink to="/spaceships">Spaceships</NavLink>
-          </Nav>
-          <Nav>
-            <NavLink to="/missions">Missions</NavLink>
-          </Nav>
-        </Container>
-      </Navbar>
-      
-    </>
+    <nav class="navbar navbar-expand-lg navbar-dark-grey bg-light">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href='/'>Astronauts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/missions">Missions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/spaceships">SpaceShips</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 }
 
 export default NavBar;
+
+
+
+<Nav class="navbar navbar-default" >
+<div class="container-fluid">
+  <ul class = "nav navbar-nav">
+  <Container >
+  <Nav>
+    <NavLink class="nav-link" to='/'> Home Page</NavLink>
+  </Nav>
+  <Nav className="me-auto">
+    <NavLink class="nav-link" to="/spaceships">Spaceships</NavLink>
+  </Nav>
+  <Nav>
+    <NavLink class="nav-link" to="/missions">Missions</NavLink>
+  </Nav>
+  </Container>
+  </ul>
+</div>
+</Nav>
