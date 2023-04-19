@@ -45,6 +45,7 @@ class Spaceship(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     #name
     name = db.Column(db.String)
+    image = db.Column(db.String)
 
     astronauts = association_proxy('missions', 'astronaut')
     missions = db.relationship('Mission', backref='spaceship')

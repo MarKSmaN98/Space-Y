@@ -4,9 +4,9 @@ import Button from 'react-bootstrap/Button';
 function SpaceShipCard({spaceship}) {   
     
     
-    const {id, name } = spaceship
+    const {id, name, image } = spaceship
 
-
+    console.log(image)
     
     
 
@@ -16,7 +16,7 @@ function SpaceShipCard({spaceship}) {
             <div class='card-body'>
 
                 <h1 class='card-title'>{name}</h1>
-                <p> {" image here "} </p>
+                <img src={image} alt={name}/>
             </div>
             
             </div>

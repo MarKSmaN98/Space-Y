@@ -101,7 +101,9 @@ class Spaceships (Resource):
         ships = []
         for ship in Spaceship.query.all():
             new_ship={
-                'name': ship.name
+                'id': ship.id,
+                'name': ship.name,
+                'image': ship.image
             }
             ships.append(new_ship)
         response = make_response(ships, 200)
@@ -110,7 +112,7 @@ class Spaceships (Resource):
 
     def post(self):
         new_ship = Spaceship(
-            name = request.get_json()['name']
+            name = request.get_json()['name'], image=request.get_json()['image']
         )
         db.session.add(new_ship)
         db.session.commit()
