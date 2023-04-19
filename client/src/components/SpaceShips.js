@@ -27,8 +27,6 @@ function SpaceShips() {
             setData([...data, res])
         })
     }
-
-
     
     useEffect(() => {
 
@@ -39,6 +37,12 @@ function SpaceShips() {
             })
     }, [])
 
+    const handleChange = (e) => {
+        const name = e.target.name
+        const value = e.target.value
+        setFormData({...formData, [name]:value})
+        console.log(formData)
+    }
     
     const spacelist = data.map((spaceship) => {
         return ( <SpaceShipCard key={spaceship.id} spaceship={spaceship}/> )
@@ -51,7 +55,7 @@ function SpaceShips() {
                 <form onSubmit={handleSubmit}>
                     <div class='form-group'>
                         <label> SpaceShip Name </label>
-                        <input class= 'form-control' name='name' id='spaceshipname' placeholder="ex. Rainbow9"/> 
+                        <input onChange={handleChange} class= 'form-control' name='name' id='spaceshipname' placeholder="ex. Rainbow9"/> 
                     </div>
                     <div class="form-group">
                         <label >SpaceShip Image</label>
