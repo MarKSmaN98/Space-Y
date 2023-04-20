@@ -125,7 +125,8 @@ class SpaceshipById (Resource):
     def get(self, id):
         target = Spaceship.query.filter(Spaceship.id == id).first()
         body = {
-            'name': target.name
+            'name': target.name,
+            'image': target.image
         }
         resp = make_response(
             body,
