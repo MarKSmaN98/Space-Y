@@ -63,11 +63,11 @@ function Missions() {
                 <h2>Add New Mission Assignment: </h2>
                 <div class='form-group'>
                     <label> SpaceShip Id </label>
-                    <input onChange={handleChange} class= 'form-control' name='spaceship_id' placeholder="ex. Rainbow9"/> 
+                    <input onChange={handleChange} class= 'form-control' name='spaceship_id' placeholder="ex. 1"/> 
                 </div>
                 <div class="form-group">
                     <label >Astronaut Id</label>
-                    <input onChange={handleChange} name='astronaut_id' class="form-control" placeholder="URL" />
+                    <input onChange={handleChange} name='astronaut_id' class="form-control" placeholder="ex. 1" />
                 </div>
                 <button onClick ={handleSubmit} type="submit" class="btn btn-primary">Submit</button>
             </form>
