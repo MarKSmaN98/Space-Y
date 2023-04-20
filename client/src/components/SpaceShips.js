@@ -7,7 +7,8 @@ function SpaceShips() {
     const [data, setData] = useState([])
     const [visibility, setVisibility]=useState(true)
     const [formData, setFormData] = useState({
-        name: ''
+        name: '',
+        image: ''
     })
 
     const handleSubmit = (e) => {
@@ -20,7 +21,8 @@ function SpaceShips() {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                'name': formData.name
+                'name': formData.name,
+                'image': formData.image
             })
         })
         .then(res => res.json())
@@ -66,7 +68,7 @@ function SpaceShips() {
                     </div>
                     <div class="form-group">
                         <label >SpaceShip Image</label>
-                        <input name='image' class="form-control" id="spaceshipname" placeholder="URL" />
+                        <input onChange={handleChange} name='image' class="form-control" id="spaceshipname" placeholder="URL" />
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
