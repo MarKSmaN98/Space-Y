@@ -57,7 +57,7 @@ function Missions() {
 
 
     return(
-        <div>
+        <div class="text-center">
             <Button onClick={handleVisibility}>Add New Mission Assignment</Button>
             <form hidden={visibility} onSubmit={handleSubmit} style={{ width: '51%', margin:'auto'}}>
                 <h2>Add New Mission Assignment: </h2>
