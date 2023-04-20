@@ -71,7 +71,6 @@ function Astronauts() {
                     <div class="form-group">
                         <label >Astronaut Name</label>
                         <input class="form-control" name='name' id="astroname" aria-describedby="emailHelp" placeholder="ex. Willy Wonka" onChange={handleChange} />
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
                         <label >Astronaut Age</label>
