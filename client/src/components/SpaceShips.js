@@ -68,11 +68,7 @@ function SpaceShips() {
                     </div>
                     <div class="form-group">
                         <label >SpaceShip Image</label>
-<<<<<<< Updated upstream
                         <input onChange={handleChange} name='image' class="form-control" id="spaceshipname" placeholder="URL" />
-=======
-                        <input class="form-control" name='image' id="spaceshipname" placeholder="URL" />
->>>>>>> Stashed changes
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
