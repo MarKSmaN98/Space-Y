@@ -72,7 +72,7 @@ function AstronautCard({astro, removeAstro, setData, list}) {
     return(
         <div>
 
-            <div className='card'>
+            <div className='card' >
             <div class='card-body'>
                 <h1 class='card-title'>{name}</h1>
                 <p>{age}</p>
@@ -81,8 +81,8 @@ function AstronautCard({astro, removeAstro, setData, list}) {
                 <Button onClick={switchDisplay}>Modify</Button>
             </div>
             </div>
-            <div class='form-group' hidden={!showEdit}>
-                <form onSubmit={handleSubmit}>
+            <div class='form-group' >
+                <form hidden={!showEdit} onSubmit={handleSubmit}>
                     <label>Name:</label>
                     <input class="form-control" name='name' id="astroname" placeholder="ex. Willy Wonka" />
                     <label>Age</label>

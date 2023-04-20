@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import MissionCard from './MissionCard.js'
+import Button from 'react-bootstrap/Button';
 
 function Missions() {
     const [data, setData] = useState([])
+    const [visibility, setVisibility]=useState(true)
     const [formData, setFormData] = useState({
         astronaut_id:'',
         spaceship_id:''
@@ -32,6 +34,12 @@ function Missions() {
         .then(res => {
             setData([...data, res])
         })
+        e.target.reset()
+        setVisibility(!visibility)
+    }
+
+    const handleVisibility = () => {
+        setVisibility(!visibility)
     }
 
     let handleChange = (e) => {
@@ -50,7 +58,8 @@ function Missions() {
 
     return(
         <div>
-            <form onSubmit={handleSubmit}>
+            <Button onClick={handleVisibility}>Add New Mission Assignment</Button>
+            <form hidden={visibility} onSubmit={handleSubmit} style={{ width: '51%', margin:'auto'}}>
                 <h2>Add New Mission Assignment: </h2>
                 <div class='form-group'>
                     <label> SpaceShip Id </label>
@@ -62,7 +71,10 @@ function Missions() {
                 </div>
                 <button onClick ={handleSubmit} type="submit" class="btn btn-primary">Submit</button>
             </form>
-            {missionList}
+            <div class='row row-cols-3 me-2'>
+                {missionList}
+            </div>
+            
         </div>
         
     )

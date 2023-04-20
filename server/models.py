@@ -26,13 +26,14 @@ class Astronaut(db.Model, SerializerMixin):
 
     @validates('weight') 
     def weight_validation(self, key, weight):
-        if not 110 < weight < 209:
+        if not 110 < int(weight) < 209:
             raise ValueError('weight must be above 110 and less than 209')
         return weight
 
     @validates('age')
     def age_validation(self, key, age_input):
-        if type(age_input) != int:
+        ageval = int(age_input)
+        if type((ageval)) != int:
             raise ValueError('age must be an integer')
         return age_input
 

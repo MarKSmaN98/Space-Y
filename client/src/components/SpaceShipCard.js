@@ -12,11 +12,14 @@ function SpaceShipCard({spaceship}) {
 
     return(
         <div> 
-            <div className= 'card'> 
+            <div class="card text-center" style={{ width: '100%', height: '100%' }}> 
             <div class='card-body'>
 
                 <h1 class='card-title'>{name}</h1>
-                <img src={image} alt={name}/>
+                <div >
+                    <img src={image} alt={name} style={{ width: '100%', height: '100%' }} />
+                </div>
+                
             </div>
             
             </div>

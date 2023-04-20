@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import AstronautCard from './AstronautCard.js'
+import Button from 'react-bootstrap/Button';
 
 
 function Astronauts() {
     const [data, setData] = useState([])
+    const [showForm, setShowForm]=useState(true)
     const [formData, setFormData] = useState({
         name:'',
         age:'',
@@ -28,10 +30,17 @@ function Astronauts() {
         .then(res => {
             setData([...data, res])
         })
+
+        e.target.reset()
+        setShowForm(!showForm)
     }
 
     let removeAstro = (drop) => {
         setData(data.filter((astro) => astro.id != drop))
+    }
+
+    let displayForm = () => {
+        setShowForm(!showForm)
     }
 
 
@@ -56,8 +65,9 @@ function Astronauts() {
 
     return(
         <div>
-            <div>
-                <form onSubmit={handleSubmit}>
+            <div class="container" style={{margin:'auto'}} >
+                <Button class='mx-auto' onClick={displayForm}>Add New Astronaut</Button>
+                <form hidden={showForm} onSubmit={handleSubmit}>
                     <div class="form-group">
                         <label >Astronaut Name</label>
                         <input class="form-control" name='name' id="astroname" aria-describedby="emailHelp" placeholder="ex. Willy Wonka" onChange={handleChange} />
@@ -74,7 +84,7 @@ function Astronauts() {
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
-            <div>
+            <div class='row row-cols-3 me-2'>
                 {astrolist}
             </div>
         </div>

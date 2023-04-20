@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import SpaceShipCard from './SpaceShipCard.js';
+import Button from 'react-bootstrap/Button';
 
 function SpaceShips() {
 
     const [data, setData] = useState([])
-
+    const [visibility, setVisibility]=useState(true)
     const [formData, setFormData] = useState({
         name: ''
     })
@@ -26,6 +27,8 @@ function SpaceShips() {
         .then(res => {
             setData([...data, res])
         })
+        e.target.reset()
+        setVisibility(!visibility)
     }
     
     useEffect(() => {
@@ -48,11 +51,15 @@ function SpaceShips() {
         return ( <SpaceShipCard key={spaceship.id} spaceship={spaceship}/> )
     })
     
+    const handleVisibility = () => {
+        setVisibility(!visibility)
+    }
     
     return(
         <div>
             <div>
-                <form onSubmit={handleSubmit}>
+                <Button onClick={handleVisibility}>Add New Ship</Button>
+                <form hidden={visibility} onSubmit={handleSubmit} style={{ width: '51%', margin:'auto'}}>
                     <div class='form-group'>
                         <label> SpaceShip Name </label>
                         <input onChange={handleChange} class= 'form-control' name='name' id='spaceshipname' placeholder="ex. Rainbow9"/> 
@@ -64,7 +71,7 @@ function SpaceShips() {
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
-            <div> 
+            <div class='row row-cols-3 me-2' > 
                 {spacelist}
             </div>
         </div>
