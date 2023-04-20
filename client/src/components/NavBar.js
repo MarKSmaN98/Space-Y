@@ -14,7 +14,7 @@ function NavBar() {
             <a class="nav-link" href="/missions">Missions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/spaceships">SpaceShips</a>
+            <a class="nav-link" href="/spaceships">Spaceships</a>
           </li>
         </ul>
       </div>
