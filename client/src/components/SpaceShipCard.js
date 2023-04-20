@@ -11,7 +11,7 @@ function SpaceShipCard({spaceship}) {
     
 
     return(
-        <div> 
+        <div class="mt-4"> 
             <div class="card text-center" style={{ width: '100%', height: '100%' }}> 
             <div class='card-body'>
 

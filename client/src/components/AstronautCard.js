@@ -70,7 +70,7 @@ function AstronautCard({astro, removeAstro, setData, list}) {
     }
 
     return(
-        <div>
+        <div class="mt-4">
 
             <div className='card' >
             <div class='card-body'>

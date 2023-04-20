@@ -58,7 +58,7 @@ function SpaceShips() {
     }
     
     return(
-        <div>
+        <div class="mt-2">
             <div class="text-center">
                 <Button onClick={handleVisibility}>Add New Ship</Button>
                 <form hidden={visibility} onSubmit={handleSubmit} style={{ width: '51%', margin:'auto'}}>

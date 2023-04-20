@@ -64,7 +64,7 @@ function Astronauts() {
     }) 
 
     return(
-        <div>
+        <div class="mt-2">
             <div class="container text-center" style={{margin:'auto'}} >
                 <Button class='mx-auto' onClick={displayForm}>Add New Astronaut</Button>
                 <form hidden={showForm} onSubmit={handleSubmit}>
