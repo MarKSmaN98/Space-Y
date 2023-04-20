@@ -75,8 +75,8 @@ function AstronautCard({astro, removeAstro, setData, list}) {
             <div className='card' >
             <div class='card-body'>
                 <h1 class='card-title'>{name}</h1>
-                <p>{age}</p>
-                <p>{weight}</p>
+                <h4>Age: {age}</h4>
+                <h4>Weight: {weight}lbs.</h4>
                 <Button onClick={dropAstro}>Remove</Button>
                 <Button onClick={switchDisplay}>Modify</Button>
             </div>
