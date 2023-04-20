@@ -58,7 +58,7 @@ function Missions() {
 
     return(
         <div class="text-center mt-3">
-            <Button class="mt-1" onClick={handleVisibility}>Add New Mission Assignment</Button>
+            <Button variant = "dark" class="mt-1" onClick={handleVisibility}>Add New Mission Assignment</Button>
             <div class="p-4">
                 <form hidden={visibility} onSubmit={handleSubmit} style={{ width: '51%', margin:'auto'}}>
                     <h2>Add New Mission Assignment: </h2>
@@ -70,7 +70,7 @@ function Missions() {
                         <label >Astronaut Id</label>
                         <input onChange={handleChange} name='astronaut_id' class="form-control" placeholder="ex. 1" />
                     </div>
-                    <button onClick ={handleSubmit} type="submit" class="btn btn-primary">Submit</button>
+                    <Button variant = "dark" onClick ={handleSubmit} type="submit" class="btn btn-primary">Submit</Button>
                 </form>
                 <div class='row row-cols-3 me-2'>
                     {missionList}

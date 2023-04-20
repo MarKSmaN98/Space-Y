@@ -60,7 +60,7 @@ function SpaceShips() {
     return(
         <div class="mt-2">
             <div class="text-center">
-                <Button onClick={handleVisibility}>Add New Ship</Button>
+                <Button variant = "dark" onClick={handleVisibility}>Add New Ship</Button>
                 <form hidden={visibility} onSubmit={handleSubmit} style={{ width: '51%', margin:'auto'}}>
                     <div class='form-group'>
                         <label> SpaceShip Name </label>
@@ -70,7 +70,7 @@ function SpaceShips() {
                         <label >SpaceShip Image</label>
                         <input onChange={handleChange} name='image' class="form-control" id="spaceshipname" placeholder="URL" />
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <Button variant="dark" type="submit" class="btn btn-primary">Submit</Button>
                 </form>
             </div>
             <div class='row row-cols-3 me-2' > 

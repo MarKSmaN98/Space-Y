@@ -66,7 +66,7 @@ function Astronauts() {
     return(
         <div class="mt-2">
             <div class="container text-center" style={{margin:'auto'}} >
-                <Button class='mx-auto' onClick={displayForm}>Add New Astronaut</Button>
+                <Button variant ="dark" class='mx-auto' onClick={displayForm}>Add New Astronaut</Button>
                 <form hidden={showForm} onSubmit={handleSubmit}>
                     <div class="form-group">
                         <label >Astronaut Name</label>
@@ -80,7 +80,7 @@ function Astronauts() {
                         <label >Astronaut Weight</label>
                         <input onChange={handleChange} class="form-control" name='weight' id="exampleInputPassword1" placeholder="ex. 155" />
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <Button variant = "dark" type="submit" class="btn btn-primary">Submit</Button>
                 </form>
             </div>
             <div class='row row-cols-3 me-2'>
