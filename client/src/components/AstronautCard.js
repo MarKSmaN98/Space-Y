@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 
 
 function AstronautCard({astro, removeAstro, setData, list}) {
-    const [showEdit, setShowEdit] = useState(false);
+    const [showEdit, setShowEdit] = useState(true);
 
 
 
@@ -49,6 +49,7 @@ function AstronautCard({astro, removeAstro, setData, list}) {
                     cpy[astroId].age = age;
                     cpy[astroId].weight = weight;
                     setData(cpy)
+                    setShowEdit(!showEdit)
             })
         
 
@@ -69,49 +70,74 @@ function AstronautCard({astro, removeAstro, setData, list}) {
         setShowEdit(!showEdit);
     }
 
-    return(
-        <div class="mt-4">
-
-            <div className='card' >
-            <div class='card-body'>
+    let mainDisp = () => {
+        return (
+            <div className="card-body">
                 <h1 class='card-title'>{name}</h1>
                 <h4>Age: {age}</h4>
                 <h4>Weight: {weight}lbs.</h4>
-                <Button variant="danger" onClick={dropAstro}>Remove</Button>
-                <Button variant="secondary" onClick={switchDisplay}>Modify</Button>
             </div>
-            </div>
-            <div class='form-group' >
-                <form hidden={!showEdit} onSubmit={handleSubmit}>
+        )
+    }
+    let modDisp = () => {
+        return (
+            <div class='form-group mb-2'>
+                <form onSubmit={handleSubmit}>
                     <label>Name:</label>
                     <input class="form-control" name='name' id="astroname" placeholder="ex. Willy Wonka" />
                     <label>Age</label>
                     <input class="form-control" name= 'age' id="astroage" placeholder="ex. 30" />
                     <label >Weight</label>
-                    <input class="form-control" name='weight' id="astroweight" placeholder="LBS" />
-                    <Button variant="dark" type="submit" class="btn btn-primary">Submit</Button>
+                    <input class="form-control mb-2" name='weight' id="astroweight" placeholder="LBS" />
+                    <Button type="submit mt-1" variant="dark" class="btn btn-primary">Submit</Button>
                 </form>
             </div>
+        )
+    }
+
+    return(
+        <div class="mt-4">
+            <div class="card text-center bg-light">
+                {
+                    showEdit? mainDisp() : modDisp()
+                }
+                <div class="ms-2 mb-2 text-center">
+                    <Button variant="danger" onClick={dropAstro}>Remove</Button>
+                    <Button variant="secondary" onClick={switchDisplay}>Modify</Button>
+                </div>
+            </div>
         </div>
-        
     )
 }
 
 export default AstronautCard
 
-{/* <form onSubmit={handleSubmit}>
-<div class="form-group">
-    <label >Astronaut Name</label>
-    <input class="form-control" name='name' id="astroname" aria-describedby="emailHelp" placeholder="ex. Willy Wonka" onChange={handleChange} />
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+
+
+
+
+{/* <div class="mt-4">
+
+<div className='card' >
+<div class='card-body'>
+    <h1 class='card-title'>{name}</h1>
+    <h4>Age: {age}</h4>
+    <h4>Weight: {weight}lbs.</h4>
+    <Button variant="danger" onClick={dropAstro}>Remove</Button>
+    <Button variant="secondary" onClick={switchDisplay}>Modify</Button>
 </div>
-<div class="form-group">
-    <label >Astronaut Age</label>
-    <input onChange={handleChange} name= 'age' class="form-control" id="exampleInputPassword1" placeholder="ex. 30" />
 </div>
-<div class="form-group">
-    <label >Astronaut Weight</label>
-    <input onChange={handleChange} class="form-control" name='weight' id="exampleInputPassword1" placeholder="ex. 155" />
+<div class='form-group' >
+    <form hidden={!showEdit} onSubmit={handleSubmit}>
+        <label>Name:</label>
+        <input class="form-control" name='name' id="astroname" placeholder="ex. Willy Wonka" />
+        <label>Age</label>
+        <input class="form-control" name= 'age' id="astroage" placeholder="ex. 30" />
+        <label >Weight</label>
+        <input class="form-control" name='weight' id="astroweight" placeholder="LBS" />
+        <Button variant="dark" type="submit" class="btn btn-primary">Submit</Button>
+    </form>
 </div>
-<button type="submit" class="btn btn-primary">Submit</button>
-</form> */}
+</div>
+ */}
