@@ -20,7 +20,7 @@ class Astronaut(db.Model, SerializerMixin):
     weight = db.Column(db.Integer)
 
     spaceships = association_proxy('missions', 'spaceship')
-    missions = db.relationship('Mission', backref='astronaut')
+    missions = db.relationship('Mission', backref='astronaut', cascade='all, delete-orphan')
 
     __table_args__ = (db.CheckConstraint('age == int(age)'),)
 

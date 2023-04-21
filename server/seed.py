@@ -4,7 +4,7 @@ import random
 from random import randint, choice as rc
 from faker import Faker
 from app import app
-from models import db, Astronaut, Spaceship
+from models import db, Astronaut, Spaceship, Mission
 fake = Faker()
 
 with app.app_context():
@@ -51,6 +51,32 @@ with app.app_context():
     )
 
     db.session.add_all([spaceship1, spaceship2, spaceship3, spaceship4])
+    db.session.commit()
+
+    Mission.query.delete()
+    db.session.commit()
+
+    m1 = Mission(
+        astronaut_id=1,
+        spaceship_id='2',
+    )
+
+    m2 = Mission(
+        astronaut_id=2,
+        spaceship_id='3',
+    )
+
+    m3 = Mission(
+        astronaut_id=4,
+        spaceship_id='2',
+    )
+
+    m4 = Mission(
+        astronaut_id=7,
+        spaceship_id='3',
+    )
+
+    db.session.add_all([m1, m2, m3, m4])
     db.session.commit()
 
 

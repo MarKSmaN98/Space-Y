@@ -32,15 +32,21 @@ class Astronauts (Resource):
         return response
     
     def post(self):
-        new = Astronaut(
+
+        try:
+            new = Astronaut(
             name = request.get_json()['name'],
             age = request.get_json()['age'],
             weight = request.get_json()['weight']
         )
-        db.session.add(new)
-        db.session.commit()
+            db.session.add(new)
+            db.session.commit()
 
-        response = make_response(new.to_dict(), 201)
+            response = make_response(new.to_dict(), 201)
+
+        except ValueError:
+            db.session.rollback()
+            response = make_response({'error': 'validation errors'}, 422)
 
         return response
 
@@ -53,9 +59,15 @@ class AstronautByID (Resource):
 
         astronaut = Astronaut.query.filter_by(id=id).first()
 
-        astronaut_dict = astronaut.to_dict()
+        if astronaut == None:
 
-        response = make_response(astronaut_dict, 200)
+            response = make_response({'error': 'Astronaut not found'}, 404)
+
+        else:
+            
+            astronaut_dict = astronaut.to_dict()
+
+            response = make_response(astronaut_dict, 200)
 
         return response
 
@@ -63,10 +75,12 @@ class AstronautByID (Resource):
     def patch(self, id):
         
         data = request.get_json()
-
+        
         astronaut = Astronaut.query.filter_by(id=id).first()
 
+            
         for attr in data:
+                
             setattr(astronaut, attr, data[attr])
 
         db.session.add(astronaut)
@@ -83,12 +97,16 @@ class AstronautByID (Resource):
         
         astronaut = Astronaut.query.filter_by(id=id).first()
 
-        db.session.delete(astronaut)
-        db.session.commit()
+        if astronaut == None:
 
-        astronaut_dict = astronaut.to_dict()
+            response = make_response({'error': 'Astronaut not found'}, 404)
 
-        response = make_response(astronaut_dict, 204)
+        else:
+            
+            db.session.delete(astronaut)
+            db.session.commit()
+
+            response = make_response({}, 204)
 
         return response
 

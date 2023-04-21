@@ -34,7 +34,6 @@ function Missions() {
         .then(res => {
             setData([...data, res])
         })
-        e.target.reset()
         setVisibility(!visibility)
     }
 
