@@ -4,17 +4,17 @@ import {NavLink} from "react-router-dom";
 
 function NavBar() {
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark-grey bg-light">
-      <div class="collapse navbar-collapse" id="navbarNav">
+    <nav class="navbar navbar-expand-lg navbar-dark-grey bg-light sticky-top">
+      <div class="px-4 collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href='/'>Astronauts</a>
+            <a class=" text-dark nav-link" href='/'>Astronauts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/missions">Missions</a>
+            <a class="text-dark nav-link" href="/missions">Missions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/spaceships">Spaceships</a>
+            <a class="text-dark nav-link" href="/spaceships">Spaceships</a>
           </li>
         </ul>
       </div>

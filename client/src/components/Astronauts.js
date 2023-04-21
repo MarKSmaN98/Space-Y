@@ -64,26 +64,26 @@ function Astronauts() {
     }) 
 
     return(
-        <div class="mt-2">
+        <div class="mt-2 px-10">
             <div class="container text-center" style={{margin:'auto'}} >
                 <Button variant ="dark" class='mx-auto' onClick={displayForm}>Add New Astronaut</Button>
                 <form hidden={showForm} onSubmit={handleSubmit}>
-                    <div class="form-group">
+                    <div class="pb-2 py-4 form-group">
                         <label >Astronaut Name</label>
                         <input class="form-control" name='name' id="astroname" aria-describedby="emailHelp" placeholder="ex. Willy Wonka" onChange={handleChange} />
                     </div>
-                    <div class="form-group">
+                    <div class="pb-2 form-group">
                         <label >Astronaut Age</label>
                         <input onChange={handleChange} name= 'age' class="form-control" id="exampleInputPassword1" placeholder="ex. 30" />
                     </div>
-                    <div class="form-group">
+                    <div class="pb-4 form-group">
                         <label >Astronaut Weight</label>
                         <input onChange={handleChange} class="form-control" name='weight' id="exampleInputPassword1" placeholder="ex. 155" />
                     </div>
                     <Button variant = "dark" type="submit" class="btn btn-primary">Submit</Button>
                 </form>
             </div>
-            <div class='row row-cols-3 me-2'>
+            <div class='row row-cols-3 px-3 pe-2 ps-3'>
                 {astrolist}
             </div>
         </div>

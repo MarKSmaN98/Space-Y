@@ -62,11 +62,11 @@ function Missions() {
             <div class="p-4">
                 <form hidden={visibility} onSubmit={handleSubmit} style={{ width: '51%', margin:'auto'}}>
                     <h2>Add New Mission Assignment: </h2>
-                    <div class='form-group'>
+                    <div class='pb-2 py-4 form-group'>
                         <label> SpaceShip Id </label>
                         <input onChange={handleChange} class= 'form-control' name='spaceship_id' placeholder="ex. 1"/> 
                     </div>
-                    <div class="form-group">
+                    <div class="pb-4 form-group">
                         <label >Astronaut Id</label>
                         <input onChange={handleChange} name='astronaut_id' class="form-control" placeholder="ex. 1" />
                     </div>

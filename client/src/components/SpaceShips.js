@@ -62,18 +62,18 @@ function SpaceShips() {
             <div class="text-center">
                 <Button variant = "dark" onClick={handleVisibility}>Add New Ship</Button>
                 <form hidden={visibility} onSubmit={handleSubmit} style={{ width: '51%', margin:'auto'}}>
-                    <div class='form-group'>
+                    <div class='pb-2 py-4 form-group'>
                         <label> SpaceShip Name </label>
                         <input onChange={handleChange} class= 'form-control' name='name' id='spaceshipname' placeholder="ex. Rainbow9"/> 
                     </div>
-                    <div class="form-group">
+                    <div class="pb-4 form-group">
                         <label >SpaceShip Image</label>
                         <input onChange={handleChange} name='image' class="form-control" id="spaceshipname" placeholder="URL" />
                     </div>
                     <Button variant="dark" type="submit" class="btn btn-primary">Submit</Button>
                 </form>
             </div>
-            <div class='row row-cols-3 me-2' > 
+            <div class='row row-cols-3 px-3 pe-2 ps-3' > 
                 {spacelist}
             </div>
         </div>
